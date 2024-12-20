@@ -43,7 +43,7 @@ install(){
   
   cd ${installpath}
   echo "正在安装..."
-  if ! git clone https://github.com/frankiejun/serv00-play.git; then
+  if ! git clone https://github.com/bmqy/serv00-play.git; then
     echo -e "${RED}安装失败!${RESET}"
     exit 1;
   fi
@@ -985,8 +985,8 @@ startAgent(){
      args="${args} --tls "
   fi
 
-  #echo "./nezha-agent ${args} -s ${nezha_domain}:${nezha_port} -p ${nezha_pwd}"
-  nohup ./nezha-agent ${args} -s ${nezha_domain}:${nezha_port} -p ${nezha_pwd} >/dev/null 2>&1 &
+  #echo "./nezha/nezha-agent ${args} -s ${nezha_domain}:${nezha_port} -p ${nezha_pwd}"
+  nohup ./nezha/nezha-agent ${args} -s ${nezha_domain}:${nezha_port} -p ${nezha_pwd} >/dev/null 2>&1 &
   
   if checknezhaAgentAlive; then
       green "启动成功!"
@@ -1005,7 +1005,7 @@ installNeZhaAgent(){
    cd ${workedir}
    if [[ ! -e nezha-agent ]]; then
     echo "正在下载哪吒探针..."
-    local url="https://github.com/nezhahq/agent/releases/download/v1.1.4/nezha-agent_freebsd_arm64.zip"
+    local url="https://github.com/nezhahq/agent/releases/download/v1.2.0/nezha-agent_freebsd_arm64.zip"
     agentZip="nezha-agent.zip"
     if ! wget -qO "$agentZip" "$url"; then
         red "下载哪吒探针失败"
@@ -2257,7 +2257,7 @@ installBurnReading(){
   domainPath="$installpath/domains/$domain/public_html"
   cd $domainPath
   echo "正在下载并安装 OneTimeMessagePHP ..."
-  if ! download_from_github_release frankiejun OneTimeMessagePHP OneTimeMessagePHP; then
+  if ! download_from_github_release bmqy OneTimeMessagePHP OneTimeMessagePHP; then
       red "下载失败!"
       return 1
   fi
@@ -2526,7 +2526,7 @@ showMenu(){
   art_wrod=$(figlet "serv00-play")
   echo "<------------------------------------------------------------------>"
   echo -e "${CYAN}${art_wrod}${RESET}"
-  echo -e "${GREEN} 饭奇骏频道:https://www.youtube.com/@frankiejun8965 ${RESET}"
+  echo -e "${GREEN} 饭奇骏频道:https://www.youtube.com/@bmqy8965 ${RESET}"
   echo -e "${GREEN} TG交流群:https://t.me/fanyousuiqun ${RESET}"
   echo "<------------------------------------------------------------------>"
   echo "请选择一个选项:"
